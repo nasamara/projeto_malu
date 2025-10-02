@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon com emoji de foquinha -->
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦭</text></svg>">
+  
+  <title>cadastre-se</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #97bcb1, #90b1ed);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .cadastro-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #6e8ef9;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #6660e0;
+    }
+    p {
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+    a {
+      color: #294cc8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="cadastro-container">
+    <h2>Crie sua conta 🦭</h2>
+    <input type="text" id="newUser" placeholder="Novo usuário">
+    <input type="password" id="newPass" placeholder="Nova senha">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <p>Já tem conta? <a href="login.html">Voltar ao login</a></p>
+  </div>
+
+  <script>
+    function cadastrar() {
+      const newUser = document.getElementById('newUser').value;
+      const newPass = document.getElementById('newPass').value;
+
+      if (newUser && newPass) {
+        // salva no navegador (localStorage)
+        localStorage.setItem("usuario", newUser);
+        localStorage.setItem("senha", newPass);
+
+        alert("Cadastro realizado com sucesso!");
+        // manda direto pro login
+        window.location.href = "login.html";
+      } else {
+        alert("Preencha todos os campos!");
+      }
+    }
+  </script>
+</body>
+</html>

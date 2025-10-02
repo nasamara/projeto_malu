@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Cantinho</title>
+
+  <!-- Fonte bonita do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CONFIGURAÇÃO GERAL */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e0f0ff;
+      color: #333;
+      line-height: 1.6;
+    }
+    h2,h3 {text-align:center; color:#1e3a5f; margin-bottom:1rem;}
+
+    /* CABEÇALHO CENTRALIZADO */
+header {
+  background: linear-gradient(135deg, #cfe8ff, #a3c9f9); 
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 0 0 20px 20px; 
+}
+.header-top {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  gap: 0.5rem;            
+  margin-bottom: 1rem;
+}
+header .logo {
+  width: 60px; 
+}
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3a5f;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;      
+  justify-content: center; 
+  gap: 0.5rem;          
+  margin-top: 0.5rem;
+}
+nav button {
+  background: #a3c9f9;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px; 
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+nav button:hover {
+  background: #82b1f5;
+  transform: scale(1.08); 
+}
+
+/* BOTÃO LOGOUT */
+.logout-btn {
+  background: #ff7f7f;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  transition: 0.3s;
+}
+.logout-btn:hover {
+  background: #ff4f4f;
+  transform: scale(1.05);
+}
+
+    /* SEÇÕES */
+    section {padding: 2rem; max-width: 900px; margin: auto;}
+
+    /* CONTADOR DE DIAS */
+    .contador {
+      text-align:center;
+      background:#cfe8ff;
+      border-radius:12px;
+      padding:2rem;
+      margin-bottom:2rem;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    .contador p {font-size:1.5rem; font-weight:bold; color:#1e3a5f;}
+
+    /*  CARTINHA DIGITAL */
+    .carta .envelope {
+      background:#cfe8ff;
+      padding:1.5rem;
+      border-radius:12px;
+      text-align:left;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      font-size:1.1rem;
+      color:#1e3a5f;
+      margin-bottom:2rem;
+    }
+
+    /*  CARROSSEL  */
+    .carousel {
+      position: relative;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+    .carousel img, .carousel video {
+      width: 100%;
+      border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      display:none;
+    }
+    .carousel button {
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(163,201,249,0.8);
+      border:none;
+      padding:0.5rem 1rem;
+      border-radius:50%;
+      cursor:pointer;
+      font-weight:bold;
+      color:#1e3a5f;
+    }
+    .prev {left:10px;}
+    .next {right:10px;}
+
+    /*  MENSAGENS ESTILO BALÃO  */
+    .mensagens {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+    .mensagem {
+      padding: 0.8rem 1rem;
+      border-radius: 20px;
+      margin: 0.5rem;
+      max-width: 70%;
+      clear: both;
+    }
+    .de {background:#cfe8ff; float:left; color:#1e3a5f;}
+    .para {background:#e0e0e0; float:right; color:#333;}
+
+    /* BOTÃO ADIVINHA */
+    .saudade {
+      text-align:center;
+      margin:2rem 0;
+      margin-top: 40px; 
+    }
+    .saudade button {
+      background:#a3c9f9;
+      border:none;
+      padding:0.8rem 1.5rem;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .saudade button:hover {background:#82b1f5;}
+    #mensagem {
+      margin-top:1rem;
+      font-weight:500;
+      color:#1e3a5f;
+    }
+
+    /* PLAYLIST DO SPOTIFY */
+    .playlist-container {
+      display: flex;
+      flex-direction: column; 
+      align-items: center;    
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    iframe {
+      border-radius:12px;
+      width:100%;
+      max-width:400px;
+      height:380px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* BOTÃO ESTILO SPOTIFY */
+    .spotify-btn {
+      background-color: #1DB954; 
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .spotify-btn:hover {
+      background-color: #1ed760;
+      transform: scale(1.05);
+    }
+
+    /* SEÇÃO DESTAQUE ADICIONADA */
+    .destaque {
+      background: linear-gradient(135deg, #a3c9f9, #cfe8ff);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 700px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .destaque h2 {color:#1e3a5f; margin-bottom:1rem;}
+    .destaque p {font-size:1.1rem; color:#333;}
+
+    /* FRASES FINAIS CENTRALIZADAS */
+    .frases-finais {
+      text-align:center; 
+      margin: 2rem 0;
+    }
+
+    /* RODAPÉ */
+    footer {
+      background:#cfe8ff;
+      padding:1.5rem 2rem;
+      text-align:center;
+      box-shadow:0 -2px 6px rgba(0,0,0,0.1);
+      margin-top:2rem;
+    }
+    footer p {margin-bottom:0.5rem;}
+    footer a {color:#1e3a5f; text-decoration:none; margin:0 0.5rem;}
+    footer a:hover {text-decoration:underline;}
+  </style>
+</head>
+
+<body>
+  <!-- CABEÇALHO -->
+  <header>
+  <div class="header-top">
+    <img src="Imagens/tecnologia.png" alt="Foquinha" class="logo">
+    <h1>Meu dia de sol</h1>
+  </div>
+  <nav>
+    <button onclick="document.getElementById('contador').scrollIntoView({behavior:'smooth'})"><strong>Dias Juntas</strong></button>
+    <button onclick="document.getElementById('carta').scrollIntoView({behavior:'smooth'})"><strong>Carta aberta pro meu bem</strong></button>
+    <button onclick="document.getElementById('galeria').scrollIntoView({behavior:'smooth'})"><strong>Nossos momentinhos</strong></button>
+    <button onclick="document.getElementById('mensagens').scrollIntoView({behavior:'smooth'})"><strong>Onde tudo começou</strong></button>
+    <button onclick="document.getElementById('playlist').scrollIntoView({behavior:'smooth'})"><strong>Playlist</strong></button>
+    <button class="logout-btn" onclick="window.location.href='login.html'">Logout</button>
+  </nav>
+</header>
+
+<!-- CONTADOR DE DIAS -->
+<section id="contador" class="contador">
+   <h3>Já estamos juntas há vários dias hein:</h3>
+    <p id="dias"></p>
+</section> 
+
+<!-- DESTAQUE CHAMATIVO -->
+<section class="destaque">
+  <h4>hey, seja muito bem vinda! </h4>
+  <p>Tudo aqui tudo foi feito pra você, com muito carinho. </p>
+  <p>esse espaço é um pedacinho de nós</p>
+</section>
+
+<!-- CARTINHA DIGITAL -->
+<section id="carta" class="carta"> 
+  <h3>meu bem</h3> 
+  <div class="envelope"> 
+    <!-- TODO: Todo o texto que você já escreveu permanece exatamente igual -->
+    <p> Hoje eu decidi escrever algo que fosse além de uma mensagem rápida ou de um “eu te amo” que a gente já fala e demonstra no dia a dia. 
+    <br> 
+   Decidi verbalizar tudo aquilo que transborda aqui dentro quando eu penso em você, te olho, sinto seu toque, seus beijinhos e até mesmo quando falo da importância que cê tem pra mim! 
+   <br> 
+   Cê chegou e mudou tanta coisa, ressignificou tantas coisas e sentimentos. A forma de enxergar o mundo a fora, os seus mínimos que pra mim é o máximo, estar do seu lado me faz perceber o quanto eu amo detalhes, e o quanto o amor é feito de detalhes, como: o cuidado, carinho, as risadas, compreensão e dentre várias outras coisas que eu jamais quero que a nossa relação perca. 
+   <br> 
+   Essa é uma carta aberta para que cê nunca se esqueça do quanto eu amo amar você, do quanto é importante te ter na minha vida de novo, mas dessa vez, como minha NAMORADA. 
+   <br> 
+   Obrigada por ser meu apoio em dias difíceis, por me tirar as risadas mais sinceras do mundo de uma forma extremamente simples (apenas sendo você) e eu quero ter isso pra vida toda. 
+   <br>
+    Assim como quero que se lembre do meu colo nos seus dias difíceis também, que eu consiga te fazer a mulher mais feliz desse mundo, que sempre que errarmos uma com a outra, tenhamos paciência pra resolver qualquer tipo de problema, pois somos eu e você contra ele. 
+    <br>
+     Não sei o que o futuro vai determinar pra gente, mas quero que saiba que eu imploro e desejo todos os dias que a gente dê certo, e que tenhamos muitas historias pra contar pros nossos filhos num churrasquinho de domingo e tal, tomando uma cervejinha, escutando um pagodin, na nossa chácara e com a vida dando tudo de bom pra gente. 
+    <br>
+    Obrigada por ser você, por me escolher todos os dias, por ter me dado uma segunda chance de te fazer a mulher mais feliz do mundo e além disso, obrigada por ter me "esperado" (como diz você KKKKKK) por tanto tempo, que possamos ter paciência uma com a outra, compreensão, companheirismo e acima de tudo o nosso amor que pra mim é a coisa mais linda do mundo. 
+    <br> 
+    Obrigada por ser você, por me ensinar tanto sobre o amor e sobre o que é ser amada com calma; Eu te amo hoje e sempre mulher! 
+  </p> 
+</div> 
+</section>
+
+<!-- CARROSSEL DE FOTOS E VÍDEOS -->
+<section id="galeria" class="carousel">
+  <h2>Memórias</h2>
+  <img src="Imagens/futurama.png" alt="eu e malu futurama">
+  <img src="Imagens/eu e malu.jpg" alt="beijinho no rosto">
+  <img src="Imagens/IMG_5792.JPEG" alt="eu e malu no espelho">
+  <img src="Imagens/malu na minha carteira.jpg" alt="malu neném">
+  <img src="Imagens/malu e minha familia.JPEG" alt="malu na minha carteira">
+  <img src="Imagens/eu e malu 1.jpg" alt="eu e malu na minha vó">
+  <img src="imagens/eu e malu 2.jpg" alt="eu e malu parque">
+
+  <!-- vídeos separados -->
+  <video controls>
+    <source src="Videos/23d0323c-a402-47d6-a930-3629022d3f15.MP4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+  <video controls>
+    <source src="Videos/409971d2e7e34860bfbb361b46752d0d.MP4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+  <video controls>
+    <source src="Videos/eu e malu (pai).MP4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+  <video controls>
+    <source src="Videos/837C83A0-43AF-488D-9F89-B0F409D55260.MP4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+  <img src="Imagens/eu e malu.jpg" alt="beijinho no rosto">
+  <img src="Imagens/malu e minha familia.JPEG" alt="malu e minha familia">
+
+  <button class="prev" onclick="carrossel(-1)">&#10094;</button>
+  <button class="next" onclick="carrossel(1)">&#10095;</button>
+</section>
+
+<!-- PLAYLIST SPOTIFY -->
+<section id="playlist">
+   <p class="CENTRALIZADO"><strong>O algoritmo já entendeu que toda vez que eu falo de amor, é de tu que tô falando princesa! </strong></p> 
+   <br> 
+   <div class="playlist-container"> 
+      <iframe 
+          src="https://open.spotify.com/embed/playlist/13Gs2eGMZotdAYuqY2J9AW" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> 
+      <a href="https://open.spotify.com/playlist/13Gs2eGMZotdAYuqY2J9AW" target="_blank"> 
+            <button class="spotify-btn">Ouvir no Spotify</button> 
+      </a> 
+   </div> 
+</section> 
+
+<!-- FRASES FINAIS CENTRALIZADAS -->
+<div class="frases-finais">
+  <h4>Nós ainda não temos tantas fotos e nem memórias marcantes, mas o pouco que temos já é incrivel. Acredito que vamos ter muitas vivências especiais, prometo te proporcionar as melhores coisas dessa vida e sempre que eu puder, a página vai ser atualizada com cada memória que tivermos. 
+    <h5>Eu te amo demais da conta e espero que você goste do nosso cantinho!</h5></h4>
+  <h5>pretendo te fazer a mulher mais feliz desse mundo todin! eu te amo maluzinha <3 </h5>
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+  <p> Esse sitezinho foi feito com muito carinho, energético e amor.</p>
+  <p> Feito pela sua namorada linda: <strong>nasamara</strong> | <a href="https://open.spotify.com/playlist/13Gs2eGMZotdAYuqY2J9AW?si=07b51c9829c04761">spotify</a> | </p> 
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  /* CONTADOR DE DIAS */ 
+  const dataInicio = new Date("2025-08-30");
+  const hoje = new Date(); 
+  const diff = Math.floor((hoje - dataInicio)/(1000*60*60*24)); 
+  document.getElementById("dias").textContent = diff + " dias";
+   
+  /* BOTÃO SAUDADE */ 
+  function mostrarMensagem(){
+     document.getElementById("mensagem").textContent="Eu beijei KKKKKKKKKKK"; 
+  }
+  
+  /* CARROSSEL DE FOTOS E VÍDEOS */
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.carousel img, .carousel video');
+  slides[0].style.display = 'block'; // garante que a primeira imagem apareça
+  function carrossel(n){
+    slides[slideIndex].style.display='none';
+    slideIndex += n;
+    if(slideIndex < 0) slideIndex = slides.length - 1;
+    if(slideIndex >= slides.length) slideIndex = 0;
+    slides[slideIndex].style.display='block';
+  }
+  /* PROTEÇÃO SIMPLES POR SENHA */
+  //  a senha que dá acesso.
+  const SENHA_CORRETA = "maluzinha";
+
+  //  sessionStorage para manter o acesso enquanto a aba estiver aberta
+  if (!sessionStorage.getItem('acesso_permitido')) {
+    let tentativas = 0;
+    let ok = false;
+
+    while (tentativas < 3 && !ok) {
+      const resposta = prompt("Digite a senha para acessar nosso cantinho:");
+      if (resposta === null) { // usuário cancelou
+        break;
+      }
+      if (resposta === SENHA_CORRETA) {
+        // senha correta, guarda na sessão e libera
+        sessionStorage.setItem('acesso_permitido', '1');
+        ok = true;
+      } else {
+        alert("Senha inválida. Tente novamente.");
+        tentativas++;
+      }
+    }
+
+    if (!ok) {
+      // bloqueia quem não acertou — manda pra outra página (ou fecha)
+      alert("Acesso negado.");
+      window.location.href = "https://www.google.com/";
+    }
+  }
+</script>
+</body>
+</html>

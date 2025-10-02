@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+   <!-- Favicon com emoji de foquinha -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦭</text></svg>">
+  
+  <title>login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #7eb2ea, #6b67e0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+    h1 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    h5 {
+      margin-bottom: 20px;
+      font-weight: normal;
+      color: #555;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #6e8ef9;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #6660e0;
+    }
+    p {
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+    a {
+      color: #294cc8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Bem-vinda mô</h1>
+    <h5> <strong>Se cadastra, faz o login</strong>
+        <br><strong>e seja feliz :)</strong></h5>
+    
+    <input type="text" id="username" placeholder="Usuário">
+    <input type="password" id="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    
+    <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      const savedUser = localStorage.getItem("usuario");
+      const savedPass = localStorage.getItem("senha");
+
+      if (user === savedUser && pass === savedPass) {
+        alert("Login feito com sucesso!");
+        window.location.href = "file:///C:/projetinho%20malu/index.html.html"; // redireciona para o site principal
+      } else {
+        alert("Usuário ou senha incorretos!");
+      }
+    }
+  </script>
+</body>
+</html>
